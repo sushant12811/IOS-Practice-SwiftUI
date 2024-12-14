@@ -15,6 +15,7 @@
 		02A48B0C2D0B6CDA00764492 /* ExchangeRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A48B0B2D0B6CDA00764492 /* ExchangeRate.swift */; };
 		02A48B0E2D0B787600764492 /* CurrencySelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A48B0D2D0B787600764492 /* CurrencySelect.swift */; };
 		02A48B102D0B789F00764492 /* CurrencyIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A48B0F2D0B789F00764492 /* CurrencyIcon.swift */; };
+		02A48B122D0E00FA00764492 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A48B112D0E00FA00764492 /* Currency.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		02A48B0B2D0B6CDA00764492 /* ExchangeRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRate.swift; sourceTree = "<group>"; };
 		02A48B0D2D0B787600764492 /* CurrencySelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelect.swift; sourceTree = "<group>"; };
 		02A48B0F2D0B789F00764492 /* CurrencyIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyIcon.swift; sourceTree = "<group>"; };
+		02A48B112D0E00FA00764492 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				02A48B0F2D0B789F00764492 /* CurrencyIcon.swift */,
 				0234541E2C7751D7000156B5 /* Assets.xcassets */,
 				023454202C7751D7000156B5 /* Preview Content */,
+				02A48B112D0E00FA00764492 /* Currency.swift */,
 			);
 			path = LOTRConverter;
 			sourceTree = "<group>";
@@ -154,6 +157,7 @@
 				02A48B0E2D0B787600764492 /* CurrencySelect.swift in Sources */,
 				0234541D2C7751D6000156B5 /* ContentView.swift in Sources */,
 				0234541B2C7751D6000156B5 /* LOTRConverterApp.swift in Sources */,
+				02A48B122D0E00FA00764492 /* Currency.swift in Sources */,
 				02A48B102D0B789F00764492 /* CurrencyIcon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
