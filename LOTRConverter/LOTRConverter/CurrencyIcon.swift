@@ -10,7 +10,7 @@ import SwiftUI
 struct CurrencyIcon: View {
     
     let currencyIcon : ImageResource
-    let currencyText: String
+    let currencyName: String
     
     var body: some View {
         
@@ -21,7 +21,7 @@ struct CurrencyIcon: View {
                 .resizable()
                 .scaledToFit()
             
-                Text(currencyText)
+                Text(currencyName)
                 .padding(3)
                 .font(.caption)
                 .frame(maxWidth: .infinity)
@@ -41,5 +41,5 @@ struct CurrencyIcon: View {
 
 
 #Preview {
-    CurrencyIcon(currencyIcon: .copperpenny, currencyText: "copperPenny")
+    CurrencyIcon(currencyIcon: .copperpenny, currencyName: "copperPenny")
 }

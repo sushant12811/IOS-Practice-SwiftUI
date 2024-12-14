@@ -35,7 +35,7 @@ enum Currency: Double, CaseIterable, Identifiable{
         }
         
     }
-        var text : String{ // Computed Properties
+        var name : String{ // Computed Properties
             switch self {
             case .copperPenny:
                 "Copper Penny"
