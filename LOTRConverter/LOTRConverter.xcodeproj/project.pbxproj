@@ -67,9 +67,9 @@
 				02A48B0B2D0B6CDA00764492 /* ExchangeRate.swift */,
 				02A48B0D2D0B787600764492 /* CurrencySelect.swift */,
 				02A48B0F2D0B789F00764492 /* CurrencyIcon.swift */,
+				02A48B112D0E00FA00764492 /* Currency.swift */,
 				0234541E2C7751D7000156B5 /* Assets.xcassets */,
 				023454202C7751D7000156B5 /* Preview Content */,
-				02A48B112D0E00FA00764492 /* Currency.swift */,
 			);
 			path = LOTRConverter;
 			sourceTree = "<group>";
