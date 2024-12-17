@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ApexPredatator: Decodable{
+struct ApexPredator: Decodable{
     let id: Int
     let name: String
     let type: String
