@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TipKit
 
 struct ContentView: View {
     
@@ -15,13 +16,14 @@ struct ContentView: View {
     @FocusState var leftTyping
     @FocusState var rightTyping
     
-    
     @State var leftAmount = ""
     @State var rightAmount = ""
     
     @State var leftCurrency : Currency = .silverPiece
     @State var rightCurrency : Currency = .goldPiece
     
+    let currencyTip = CurrencyTip()
+    let defaults = UserDefaults.standard
     
     var body: some View {
         ZStack {
@@ -49,20 +51,22 @@ struct ContentView: View {
                                 .scaledToFit()
                                 .frame(height: 35)
                             
+                            
                             Text(leftCurrency.name)
                                 .font(.headline)
                                 .foregroundStyle(.white)
                                 .padding(.bottom,-5)
                         }.onTapGesture {
                             showSelectedCurrency.toggle()
+                            currencyTip.invalidate(reason: .actionPerformed)
                             
-                            
-                        }
+                        }.popoverTip(currencyTip, arrowEdge: .bottom)
+                        
                         
                         TextField("Amount", text: $leftAmount)
                             .textFieldStyle(.roundedBorder)
                             .focused($leftTyping)
-                            
+                        
                     }
                     
                     //Right Amount
@@ -85,12 +89,14 @@ struct ContentView: View {
                             
                         }.onTapGesture {
                             showSelectedCurrency.toggle()
+                            currencyTip.invalidate(reason: .actionPerformed)
+                            
                         }
                         TextField("Amount", text: $rightAmount)
                             .textFieldStyle(.roundedBorder)
                             .multilineTextAlignment(.trailing)
                             .focused($rightTyping)
-                            
+                        
                     }
                 }
                 .padding()
@@ -119,6 +125,9 @@ struct ContentView: View {
                     
                     
                 }
+                .task {
+                    try? Tips.configure()
+                }
                 .onChange(of: leftAmount){
                     if leftTyping{
                         rightAmount = leftCurrency.convert(leftAmount, to: rightCurrency)
@@ -129,11 +138,11 @@ struct ContentView: View {
                     }
                 }
                 .onChange(of: leftCurrency){
-                        rightAmount = leftCurrency.convert(leftAmount, to: rightCurrency)
-                    }
+                    rightAmount = leftCurrency.convert(leftAmount, to: rightCurrency)
+                }
                 
                 .onChange(of: rightCurrency){
-                        leftAmount = rightCurrency.convert(rightAmount, to: leftCurrency)
+                    leftAmount = rightCurrency.convert(rightAmount, to: leftCurrency)
                 }
                 .sheet(isPresented: $showExchangeInfo, content: {
                     ExchangeInfo()
@@ -143,12 +152,23 @@ struct ContentView: View {
                 })
                 
                 
+                
             }
             
+            
+        }
+        .onTapGesture {
+            leftTyping = false // Dismisses the keyboard
+            rightTyping = false
         }
         
     }
+    
+    
+    
 }
+
+
 
 #Preview {
     ContentView()
