@@ -50,9 +50,8 @@ enum Currency: Double, CaseIterable, Identifiable{
                 "Gold Penny"
             case .goldPiece:
                 "Gold Piece"
-                
             case .copperPiece:
-                    "Copper Piece"
+                "Copper Piece"
             }
             
         }
