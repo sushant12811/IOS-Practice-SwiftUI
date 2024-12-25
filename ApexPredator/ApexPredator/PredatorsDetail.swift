@@ -19,6 +19,13 @@ struct PredatorsDetail: View {
                 Image(predatorDetails.type.rawValue)
                     .resizable()
                     .scaledToFit()
+                    .overlay{
+                        LinearGradient(stops: [
+                            Gradient.Stop(color: .clear, location: 0.8),
+                         Gradient.Stop(color: .black, location: 1)],
+                                       startPoint: .top, endPoint: .bottom)
+            }
+                
                 Image(predatorDetails.image)
                     .resizable()
                     .scaledToFit()
@@ -26,8 +33,8 @@ struct PredatorsDetail: View {
                     .scaleEffect(x: -1)
                     .shadow(color: .black, radius: 7)
                     .offset(y:20)
-            }
-                
+                    }
+            
             VStack(alignment:.leading){
                     Text(predatorDetails.name)
                     .font(.largeTitle)
@@ -64,10 +71,11 @@ struct PredatorsDetail: View {
             }
         .ignoresSafeArea()
         }
-        }
+        .preferredColorScheme(.dark)
+    }
     }
 
 
 #Preview {
-    PredatorsDetail(predatorDetails: Predators().apexPredator[2])
+    PredatorsDetail(predatorDetails: Predators().apexPredator[10])
 }
