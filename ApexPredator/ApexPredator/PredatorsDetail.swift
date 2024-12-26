@@ -29,20 +29,28 @@ struct PredatorsDetail: View {
                                            startPoint: .top, endPoint: .bottom)
                         }
                     
-                    Image(predatorDetails.image)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: geo.size.width/1.5, height: geo.size.height/3)
-                        .scaleEffect(x: -1)
-                        .shadow(color: .black, radius: 7)
-                        .offset(y:20)
+                    NavigationLink{
+                        
+                        Image(predatorDetails.image)
+                            .resizable()
+                            .scaledToFit()
+                            .scaleEffect(x: -1)
+                       
+                    }label:{
+                        Image(predatorDetails.image)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: geo.size.width/1.5, height: geo.size.height/3)
+                            .scaleEffect(x: -1)
+                            .shadow(color: .black, radius: 7)
+                            .offset(y:20)
+                    }
                 }
-                
                 VStack(alignment:.leading){
                     Text(predatorDetails.name)
                         .font(.largeTitle)
                     NavigationLink{
-                        Image(predatorDetails.image)
+                        PredatarMapView(position: .camera(MapCamera(centerCoordinate: predatorDetails.location, distance: 1000, heading:250, pitch: 80)))
                     }label:{
                         Map(position: $position ){
                             Annotation(predatorDetails.name, coordinate: predatorDetails.location){
@@ -82,8 +90,8 @@ struct PredatorsDetail: View {
                             .padding(.top, 15)
                         
                         Text(scene.sceneDescription)
+                            .multilineTextAlignment(.leading)
                             .padding(.bottom, 15)
-                        
                         
                     }
                     

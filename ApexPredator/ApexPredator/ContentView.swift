@@ -20,7 +20,6 @@ struct ContentView: View {
         predators.filter(by: currentSelection)
         predators.sort(by: alphabetical)
         return predators.search(for: searchText)
-       
     }
     
      
