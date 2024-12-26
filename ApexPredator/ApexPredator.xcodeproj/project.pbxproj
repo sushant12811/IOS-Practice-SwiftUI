@@ -15,6 +15,7 @@
 		02A48B342D10F73D00764492 /* ApexPredator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A48B332D10F73D00764492 /* ApexPredator.swift */; };
 		02A48B362D111E9500764492 /* Predators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A48B352D111E9500764492 /* Predators.swift */; };
 		02A48B382D1AF56700764492 /* PredatorsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A48B372D1AF56700764492 /* PredatorsDetail.swift */; };
+		02A48B3A2D1CD7DB00764492 /* PredatarMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A48B392D1CD7DB00764492 /* PredatarMapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		02A48B332D10F73D00764492 /* ApexPredator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApexPredator.swift; sourceTree = "<group>"; };
 		02A48B352D111E9500764492 /* Predators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predators.swift; sourceTree = "<group>"; };
 		02A48B372D1AF56700764492 /* PredatorsDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredatorsDetail.swift; sourceTree = "<group>"; };
+		02A48B392D1CD7DB00764492 /* PredatarMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredatarMapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				02A48B372D1AF56700764492 /* PredatorsDetail.swift */,
 				02A48B332D10F73D00764492 /* ApexPredator.swift */,
 				02A48B352D111E9500764492 /* Predators.swift */,
+				02A48B392D1CD7DB00764492 /* PredatarMapView.swift */,
 				02A48B312D10E22D00764492 /* jpapexpredators.json */,
 				02A48B272D10E20600764492 /* Assets.xcassets */,
 				02A48B292D10E20600764492 /* Preview Content */,
@@ -152,6 +155,7 @@
 			files = (
 				02A48B382D1AF56700764492 /* PredatorsDetail.swift in Sources */,
 				02A48B342D10F73D00764492 /* ApexPredator.swift in Sources */,
+				02A48B3A2D1CD7DB00764492 /* PredatarMapView.swift in Sources */,
 				02A48B262D10E20400764492 /* ContentView.swift in Sources */,
 				02A48B362D111E9500764492 /* Predators.swift in Sources */,
 				02A48B242D10E20400764492 /* ApexPredatorApp.swift in Sources */,
