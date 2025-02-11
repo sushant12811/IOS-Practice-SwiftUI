@@ -41,7 +41,6 @@ class Predators {
     
             }
         }
-        
     }
     
     func sort(by alphabetical: Bool){

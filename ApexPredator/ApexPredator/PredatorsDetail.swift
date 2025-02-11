@@ -11,6 +11,7 @@ import MapKit
 struct PredatorsDetail: View {
     
     let predatorDetails: ApexPredator
+    
     @State var position: MapCameraPosition
     
     

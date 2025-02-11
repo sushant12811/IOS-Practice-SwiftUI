@@ -1,0 +1,135 @@
+{
+  "appPolicies" : {
+    "eula" : "",
+    "policies" : [
+      {
+        "locale" : "en_US",
+        "policyText" : "",
+        "policyURL" : ""
+      }
+    ]
+  },
+  "identifier" : "C7414700",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "F9CD6F2E",
+      "localizations" : [
+        {
+          "description" : "Unlock for HP4 trivia questions",
+          "displayName" : "HP4 Questions",
+          "locale" : "en_CA"
+        }
+      ],
+      "productID" : "hp4",
+      "referenceName" : "HP4",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "554D1CBC",
+      "localizations" : [
+        {
+          "description" : "Unlock for HP5 trivia questions",
+          "displayName" : "HP5 trivia Questions",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "hp5",
+      "referenceName" : "HP5",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "CFC52099",
+      "localizations" : [
+        {
+          "description" : "Unlock for HP5 Trivia Questions",
+          "displayName" : "HP6 Questions",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "hp6",
+      "referenceName" : "HP6",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "1831EE95",
+      "localizations" : [
+        {
+          "description" : "Unlock for HP7 trivia questions",
+          "displayName" : "HP7 Questions",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "hp7",
+      "referenceName" : "HP7",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_failTransactionsEnabled" : false,
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}
