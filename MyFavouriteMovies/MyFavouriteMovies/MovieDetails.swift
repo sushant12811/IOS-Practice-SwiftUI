@@ -93,12 +93,7 @@ struct MovieDetails: View {
     
 }
 
-#Preview {
-    NavigationStack{
-        MovieDetails(movieDetails: Movie().movieData[1])
-        
-    }
-}
+
 
 
 
@@ -141,6 +136,16 @@ struct MovieDetailsSubView: View {
                 
             }
         }.padding(.horizontal,15)
+        
+    }
+}
+
+#Preview {
+    NavigationStack{
+        MovieDetails(
+            movieDetails: Movie().movieData[1])
+        .environmentObject(FavouriteViewModel())
+
         
     }
 }

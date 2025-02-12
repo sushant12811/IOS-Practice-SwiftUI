@@ -41,4 +41,5 @@ struct FavouriteView: View {
 
 #Preview {
     FavouriteView()
+        .environmentObject(FavouriteViewModel())
 }

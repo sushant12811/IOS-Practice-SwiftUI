@@ -19,7 +19,6 @@ class Movie:ObservableObject {
     
     //decoded function
     func decodedMovieData (){
-        let apiKey = "c3957c0341f6ceb7b221d37abf80c151"
         if let url = Bundle.main.url(forResource: "movies", withExtension: "json"){
             do{
                 let data = try Data(contentsOf: url)
