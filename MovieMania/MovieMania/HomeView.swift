@@ -53,7 +53,12 @@ struct HomeView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack {
                     ForEach(fetchService.searchResults) { movie in
-                        MovieCardView(movies: movie)
+                        NavigationLink{
+                            MovieDetails(movieDetails: movie)
+                        }label:{
+                            MovieCardView(movies: movie)
+
+                        }
                     }
                 }
                 .padding(.horizontal)
