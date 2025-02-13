@@ -70,15 +70,33 @@ struct HomeView: View {
 
 //MARK: Movie Category View
 struct MovieCategoryView: View {
+    @StateObject private var fetchService = FetchService()
+
     let title: String
-    let movies: [Movie.MovieData]
+    var movies: [Movie.MovieData]
+
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(title)
-                .font(.headline)
-                .bold()
-                .padding(.leading)
+            HStack{
+                Text(title)
+                    .font(.title3)
+                    .bold()
+                    .padding(.leading)
+                
+                NavigationLink {
+                    
+                    SeeMoreMovieList(category: categoryKey(from: title))
+
+                }label: {
+                    HStack {
+                        Spacer()
+                        Text("See more >>")
+                            .padding(.trailing,12)
+                    }
+                    
+                }
+            }
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     ForEach(movies) { movie in
@@ -95,6 +113,22 @@ struct MovieCategoryView: View {
             }
         }
     }
+    
+    
+
+    func categoryKey(from title: String) -> String {
+        switch title {
+        case "Popular Movies": 
+            return "popular"
+        case "Top Rated Movies": 
+            return "top_rated"
+        case "Upcoming Movies": 
+            return "upcoming"
+        default: return "popular"
+        }
+    }
+    
+  
     
 }
 

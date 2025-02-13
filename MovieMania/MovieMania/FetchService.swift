@@ -6,14 +6,14 @@ class FetchService: ObservableObject {
     @Published var popularMovies: [Movie.MovieData] = []
     @Published var topRatedMovies: [Movie.MovieData] = []
     @Published var upcomingMovies: [Movie.MovieData] = []
-
+    
     
     let baseURL = "https://api.themoviedb.org/3/movie"
     let apiKey = "c3957c0341f6ceb7b221d37abf80c151"
     
     //MARK: Category of movie fetching
     func fetchMovies(category: String, page:Int = 1) async {
-        guard let url = URL(string: "\(baseURL)/\(category)?api_key=\(apiKey)&language=en-US&\(page)") else {
+        guard let url = URL(string: "\(baseURL)/\(category)?api_key=\(apiKey)&language=en-US&page=\(page)") else {
             print("Invalid URL for \(category)")
             return
         }
@@ -32,11 +32,11 @@ class FetchService: ObservableObject {
             
             switch category {
             case "popular":
-                popularMovies = decodedResponse.results
+                popularMovies.append(contentsOf: decodedResponse.results)
             case "top_rated":
-                topRatedMovies = decodedResponse.results
+                topRatedMovies.append(contentsOf: decodedResponse.results)
             case "upcoming":
-                upcomingMovies = decodedResponse.results
+                upcomingMovies.append(contentsOf: decodedResponse.results)
             default:
                 break
             }
@@ -44,6 +44,7 @@ class FetchService: ObservableObject {
             print("Failed to fetch \(category): \(error.localizedDescription)")
         }
     }
+    
     
     
     //MARK: Search Query Fetching Service
