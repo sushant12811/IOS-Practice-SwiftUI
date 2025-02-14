@@ -23,8 +23,11 @@ struct HomeView: View {
                         MovieCategoryView(title: "Upcoming Movies", movies: fetchService.upcomingMovies)
                     }
                 }
-            }
+                
+            }.navigationTitle("Movies")
+
             .searchable(text: $searchText)
+            .animation(.default, value: searchText)
             .onChange(of: searchText) { _,_ in
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     Task {
@@ -32,7 +35,6 @@ struct HomeView: View {
                     }
                 }
             }
-            .navigationTitle("Movies")
             .task {
                 await fetchService.fetchMovies(category: "popular")
                 await fetchService.fetchMovies(category: "top_rated")
@@ -43,7 +45,7 @@ struct HomeView: View {
     }
     
     //MARK: Search Functionality
-    private func searchMovie() -> some View {
+    func searchMovie() -> some View {
         VStack(alignment: .leading) {
             Text("Search Results (\(fetchService.searchResults.count))")
                 .font(.headline)
