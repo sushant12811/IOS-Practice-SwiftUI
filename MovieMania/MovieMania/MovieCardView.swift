@@ -39,7 +39,7 @@ struct MovieCardView: View {
                         .foregroundColor(.white)
                 
             }
-            .frame(width: 180, height: 280)
+            .frame(width: 190, height: 280)
         }
         .background(Color.black)
         .preferredColorScheme(.dark)

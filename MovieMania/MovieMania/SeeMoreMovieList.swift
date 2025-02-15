@@ -50,7 +50,7 @@ struct SeeMoreMovieList: View {
                     }
                 }
                 
-            }
+            }.padding()
             
             .searchable(text: $searchText)
             .animation(.default, value: searchText)
