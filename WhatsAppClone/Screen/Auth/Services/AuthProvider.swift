@@ -38,11 +38,15 @@ final class AuthManager: AuthProvider {
     
     func signUp(for username: String, with email: String, and password: String) async throws {
         
-        let authResult = try await Auth.auth().createUser(withEmail: email, password: password)
-        let uid = authResult.user.uid
-        let newUser = UserDetails(uid: uid, username: username, email: email, password: password)
-        
-        try await saveUseInfotoDB(user: newUser)
+        do{
+            let authResult = try await Auth.auth().createUser(withEmail: email, password: password)
+            let uid = authResult.user.uid
+            let newUser = UserDetails(uid: uid, username: username, email: email, password: password)
+            
+            try await saveUseInfotoDB(user: newUser)
+        }catch{
+            print("Failed to create an account: \(error.localizedDescription)")
+        }
         
         
     }

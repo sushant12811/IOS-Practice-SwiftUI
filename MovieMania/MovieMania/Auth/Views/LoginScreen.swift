@@ -12,35 +12,44 @@ struct LoginScreen: View {
     @StateObject var authScreenModel = AuthScreenModel()
     
     var body: some View {
-        VStack{
-            Spacer()
-            AuthHeader()
-                .padding(.bottom,50)
-            VStack(alignment:.leading){
-                Text("LogIn")
-                    .font(.largeTitle)
-                    .bold()
-                    .padding(.leading,30)
+            VStack{
+                Spacer()
+                AuthHeader()
+                    .padding(.bottom,50)
+                VStack(alignment:.leading){
+                    Text("LogIn")
+                        .foregroundStyle(.white.opacity(0.9))
+                        .font(.largeTitle)
+                        .bold()
+                        .padding(.leading,30)
+                    
+                    AuthTextField(text: $authScreenModel.email, textFieldType: .email)
+                    
+                    AuthTextField(text: $authScreenModel.password, textFieldType: .password)
+                }
                 
-                AuthTextField(text: $authScreenModel.email, textFieldTYpe: .email)
+                forgotButton()
                 
-                AuthTextField(text: $authScreenModel.password, textFieldTYpe: .password)
+                AuthButton(buttonTitle: "LogIn") {
+                    Task{
+                        await authScreenModel.handleLogin()
+                    }
+                }
+                .disabled(authScreenModel.disabledLogInButton)
+                
+                Spacer()
+                
+                dntHaveAcc()
             }
-            
-            forgotButton()
-            
-            authButton(buttonTitle: "LogIn", onTap: {
-                
-            }).disabled(authScreenModel.disabledLogInButton)
-            
-            Spacer()
-        }.preferredColorScheme(.dark)
+            .onTapGesture {
+                authScreenModel.hideKeyboard()
+            }
+            .preferredColorScheme(.dark)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-        
-        
-        
+            .fullScreenCover(isPresented: $authScreenModel.isLoading) {
+                HomeView()
+            }
     }
-    
     
     //MARK: Forgot Button
     private func forgotButton() -> some View {
@@ -54,9 +63,27 @@ struct LoginScreen: View {
                     .fontWeight(.semibold)
                     .padding(.trailing,30)
                     .padding(.vertical, 10)
-                
             }
         }
+    }
+    
+    //MARK: Don't have an account Text Button
+    private func dntHaveAcc()-> some View{
+        NavigationLink{
+            SignUpScreen(authScreenModel: authScreenModel)
+        }label:{
+            HStack{
+                Image(systemName: "bubbles.and.sparkles.fill")
+                (
+                    Text("Don't have an account ? ")
+                    +
+                    Text("Create One")
+                        .fontWeight(.bold)
+                )
+                Image(systemName: "bubbles.and.sparkles.fill")
+
+            }
+        }.foregroundStyle(.white.opacity(0.9))
     }
 }
 

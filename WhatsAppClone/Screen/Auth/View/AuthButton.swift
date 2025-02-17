@@ -24,7 +24,7 @@ struct AuthButton: View {
     
     var body: some View {
         Button{
-            //
+            
         }label:{
             HStack{
                 

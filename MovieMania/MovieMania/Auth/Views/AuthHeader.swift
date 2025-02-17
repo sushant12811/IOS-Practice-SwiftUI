@@ -14,7 +14,6 @@ struct AuthHeader: View {
                 .bold()
                 .foregroundStyle(.mmOrange)
     }
-
 }
 
 #Preview {

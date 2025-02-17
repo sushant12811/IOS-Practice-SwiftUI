@@ -10,79 +10,63 @@ import SwiftUI
 struct AuthTextField: View {
     
     @Binding var text: String
-    
-    var textFieldTYpe: InputType
-    
-    var body: some View{
-        
-        HStack{
-            Image(systemName: textFieldTYpe.ImageSystemName)
-            
-            switch textFieldTYpe {
-        //email has already UIKeyBoad type
-                
+    var textFieldType: InputType
+
+    var body: some View {
+        HStack {
+            Image(systemName: textFieldType.imageSystemName)
+                .frame(width: 30)
+
+            switch textFieldType {
             case .password:
-                SecureField(textFieldTYpe.PlaceHolderType, text: $text)
-            
+                SecureField(textFieldType.placeholderType, text: $text)
             default:
-                //this default case could be use fo custom input as well
-                TextField(textFieldTYpe.PlaceHolderType, text: $text)
+                TextField(textFieldType.placeholderType, text: $text)
+                    .keyboardType(textFieldType.keyboardType)
+                    .autocapitalization(.none)
+                    .disableAutocorrection(true)
             }
-            
-            
-        }.font(.headline)
-        .foregroundStyle(.gray)
+        }
+        .font(.headline)
+        .foregroundStyle(.white.opacity(0.6))
         .padding()
-        .frame(maxWidth: .infinity)
-        .background(.gray.opacity(0.18))
-        .clipShape(.rect(cornerRadius: 10))
-        .padding(.horizontal,30)
-        
-        
+        .background(Color.gray.opacity(0.18))
+        .clipShape(RoundedRectangle(cornerRadius: 10))
+        .padding(.horizontal, 30)
     }
-    
 }
 
-extension AuthTextField{
-    enum InputType{
-        case email, password, customInput( _ placeholder: String, _ imageName: String)
-        
-        var PlaceHolderType: String{
+extension AuthTextField {
+    enum InputType {
+        case email, password, customInput(_ placeholder: String, _ imageName: String)
+
+        var placeholderType: String {
             switch self {
-            case .email:
-                    "Email"
-            case .password:
-                "Password"
-            case .customInput( let placeholder, _):
-                placeholder
+            case .email: return "Email"
+            case .password: return "Password"
+            case .customInput(let placeholder, _): return placeholder
             }
         }
-        
-        var ImageSystemName: String{
+
+        var imageSystemName: String {
             switch self {
-            case .email:
-                "envelope"
-            case .password:
-                "lock"
-            case .customInput( _, let imageName):
-                imageName
+            case .email: return "envelope"
+            case .password: return "lock"
+            case .customInput(_, let imageName): return imageName
             }
         }
-        
-        var keyBoardType: UIKeyboardType{
+
+        var keyboardType: UIKeyboardType {
             switch self {
-            case .email:
-                    .emailAddress
-            default:
-                    .default
+            case .email: return .emailAddress
+            default: return .default
             }
         }
-        
     }
 }
 
 #Preview {
-    ZStack{
-        AuthTextField(text: .constant(""), textFieldTYpe: .email)
+    NavigationStack{
+        AuthTextField(text: .constant(""), textFieldType: .email)
     }.preferredColorScheme(.dark)
 }

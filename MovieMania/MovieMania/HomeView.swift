@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @StateObject private var fetchService = FetchService()
     @State private var searchText = ""
+    @StateObject private var authScreenModel = AuthScreenModel()
     
     var body: some View {
         NavigationStack {
