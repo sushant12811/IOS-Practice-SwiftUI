@@ -17,6 +17,7 @@ final class AuthScreenModel: ObservableObject{
     @Published var password = ""
     @Published var username = ""
     @Published var erroState: (showError: Bool, errorMessage: String) = ( false, "Sorry")
+
     
     //MARK: Computed Properties
     var disabledLogInButton:Bool{
@@ -42,12 +43,13 @@ final class AuthScreenModel: ObservableObject{
         
     }
     
+  
+    
     
     //MARK: Handle SignIn
     func handleLogin() async {
         do{
             try await AuthManagerService.shared.signIn(with: email, and: password)
-            isLoading = true
         }catch{
             erroState.errorMessage = "Failed to logged in \(error.localizedDescription)"
             erroState.showError = true
@@ -60,19 +62,17 @@ final class AuthScreenModel: ObservableObject{
     func handleLogout() async {
         do {
             try await AuthManagerService.shared.logOut()
-            isLoading = true
+            isLoading = false
         } catch {
             erroState.errorMessage = "Failed to log out: \(error.localizedDescription)"
             erroState.showError = true
+            isLoading = false
             print("LogOut Error: \(error)")
             
         }
     }
     
-    //MARK: KeyBoard-hidden
-    func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
+  
 }
 
 

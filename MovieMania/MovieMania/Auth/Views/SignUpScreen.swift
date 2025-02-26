@@ -27,9 +27,11 @@ struct SignUpScreen: View {
                 AuthTextField(text: $authScreenModel.password, textFieldType: .password)
                 
                 AuthButton(buttonTitle: "SignUp") {
-                    print("tapped")
                     Task{
                         await authScreenModel.handleSignup()
+                        if authScreenModel.isLoading {
+                            dismiss()
+                        }
                     }
                 }
                 .disabled(authScreenModel.disabledSignUpButton)
@@ -39,14 +41,8 @@ struct SignUpScreen: View {
                 alHaveAcc()
             }
         }
-            .onTapGesture {
-                authScreenModel.hideKeyboard()
-            }
             .background(linearGradient())
             .navigationBarBackButtonHidden()
-            .navigationDestination(isPresented: $authScreenModel.isLoading, destination: {
-                HomeView()
-            })
             .ignoresSafeArea()
     }
     

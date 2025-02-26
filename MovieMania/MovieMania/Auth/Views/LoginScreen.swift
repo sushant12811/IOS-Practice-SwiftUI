@@ -12,43 +12,45 @@ struct LoginScreen: View {
     @StateObject var authScreenModel = AuthScreenModel()
     
     var body: some View {
-            VStack{
-                Spacer()
-                AuthHeader()
-                    .padding(.bottom,50)
-                VStack(alignment:.leading){
-                    Text("LogIn")
-                        .foregroundStyle(.white.opacity(0.9))
-                        .font(.largeTitle)
-                        .bold()
-                        .padding(.leading,30)
-                    
-                    AuthTextField(text: $authScreenModel.email, textFieldType: .email)
-                    
-                    AuthTextField(text: $authScreenModel.password, textFieldType: .password)
+        VStack{
+            Spacer()
+            AuthHeader()
+                .padding(.bottom,50)
+            VStack(alignment:.leading){
+                Text("LogIn")
+                    .foregroundStyle(.white.opacity(0.9))
+                    .font(.largeTitle)
+                    .bold()
+                    .padding(.leading,30)
+                
+                AuthTextField(text: $authScreenModel.email, textFieldType: .email)
+                
+                AuthTextField(text: $authScreenModel.password, textFieldType: .password)
+            }
+            
+            forgotButton()
+            
+            AuthButton(buttonTitle: "LogIn") {
+                
+                Task{
+                    await authScreenModel.handleLogin()
+                   
                 }
-                
-                forgotButton()
-                
-                AuthButton(buttonTitle: "LogIn") {
-                    Task{
-                        await authScreenModel.handleLogin()
-                    }
-                }
-                .disabled(authScreenModel.disabledLogInButton)
-                
-                Spacer()
-                
-                dntHaveAcc()
             }
-            .onTapGesture {
-                authScreenModel.hideKeyboard()
-            }
-            .preferredColorScheme(.dark)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .fullScreenCover(isPresented: $authScreenModel.isLoading) {
-                HomeView()
-            }
+            .disabled(authScreenModel.disabledLogInButton)
+            
+            Spacer()
+            
+            dntHaveAcc()
+        }
+        .preferredColorScheme(.dark)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .alert(isPresented: $authScreenModel.erroState.showError){
+            Alert(title: Text(authScreenModel.erroState.errorMessage),
+                  dismissButton: .default(Text("Ok"))
+            )
+            
+        }
     }
     
     //MARK: Forgot Button
@@ -81,7 +83,7 @@ struct LoginScreen: View {
                         .fontWeight(.bold)
                 )
                 Image(systemName: "bubbles.and.sparkles.fill")
-
+                
             }
         }.foregroundStyle(.white.opacity(0.9))
     }

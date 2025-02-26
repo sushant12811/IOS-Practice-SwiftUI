@@ -53,7 +53,7 @@ extension MainTabView {
         fileprivate var title: String {
             return rawValue.capitalized
         }
-        
+       
         fileprivate var icon: String {
             switch self {
             case .updates:
