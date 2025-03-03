@@ -20,7 +20,6 @@
 		029C52D32D67E9D10048BE35 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029C52A82D67E9D10048BE35 /* Extension.swift */; };
 		029C52D42D67E9D10048BE35 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029C52A92D67E9D10048BE35 /* Movie.swift */; };
 		029C52D52D67E9D10048BE35 /* FetchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029C52AB2D67E9D10048BE35 /* FetchService.swift */; };
-		029C52D62D67E9D10048BE35 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029C52AD2D67E9D10048BE35 /* HomeViewModel.swift */; };
 		029C52D72D67E9D10048BE35 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029C52AF2D67E9D10048BE35 /* HomeView.swift */; };
 		029C52D82D67E9D10048BE35 /* MovieCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029C52B02D67E9D10048BE35 /* MovieCardView.swift */; };
 		029C52D92D67E9D10048BE35 /* MovieDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029C52B12D67E9D10048BE35 /* MovieDetails.swift */; };
@@ -29,7 +28,6 @@
 		029C52DC2D67E9D10048BE35 /* RootScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029C52B92D67E9D10048BE35 /* RootScreenModel.swift */; };
 		029C52DD2D67E9D10048BE35 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029C52BC2D67E9D10048BE35 /* SettingView.swift */; };
 		029C52DE2D67E9D10048BE35 /* FirebaseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029C52BF2D67E9D10048BE35 /* FirebaseConstants.swift */; };
-		029C52DF2D67E9D10048BE35 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029C52C02D67E9D10048BE35 /* ToastView.swift */; };
 		029C52E02D67E9D10048BE35 /* MainTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029C52C62D67E9D10048BE35 /* MainTabItem.swift */; };
 		029C52E12D67E9D10048BE35 /* MovieManiaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029C52C72D67E9D10048BE35 /* MovieManiaApp.swift */; };
 		029C52E22D67E9D10048BE35 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 029C52B52D67E9D10048BE35 /* Preview Assets.xcassets */; };
@@ -47,6 +45,12 @@
 		02A591F22D629C9E005D21AB /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 02A591F12D629C9E005D21AB /* FirebaseCore */; };
 		02A591F42D629C9E005D21AB /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 02A591F32D629C9E005D21AB /* FirebaseDatabase */; };
 		02A591F62D629C9E005D21AB /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 02A591F52D629C9E005D21AB /* FirebaseFirestore */; };
+		02A6CF132D72A3990081A1D7 /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A6CF122D72A38C0081A1D7 /* Actor.swift */; };
+		02A6CF172D72B0820081A1D7 /* ActorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A6CF162D72B0820081A1D7 /* ActorsView.swift */; };
+		02B6C6C82D6F8B29005632E2 /* WatchProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B6C6C72D6F8B21005632E2 /* WatchProvider.swift */; };
+		02B6C6CA2D6FC394005632E2 /* ServiceProviderCardViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B6C6C92D6FC394005632E2 /* ServiceProviderCardViews.swift */; };
+		02B6C6CC2D6FD42B005632E2 /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B6C6CB2D6FD41D005632E2 /* Reviews.swift */; };
+		02B6C6CE2D6FE12D005632E2 /* UserReviewViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B6C6CD2D6FE12D005632E2 /* UserReviewViews.swift */; };
 		02CA56E82D6EBCF80085D02A /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CA56E72D6EBCEA0085D02A /* Video.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,7 +68,6 @@
 		029C52A82D67E9D10048BE35 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		029C52A92D67E9D10048BE35 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		029C52AB2D67E9D10048BE35 /* FetchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchService.swift; sourceTree = "<group>"; };
-		029C52AD2D67E9D10048BE35 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		029C52AF2D67E9D10048BE35 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		029C52B02D67E9D10048BE35 /* MovieCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCardView.swift; sourceTree = "<group>"; };
 		029C52B12D67E9D10048BE35 /* MovieDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetails.swift; sourceTree = "<group>"; };
@@ -74,7 +77,6 @@
 		029C52B92D67E9D10048BE35 /* RootScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootScreenModel.swift; sourceTree = "<group>"; };
 		029C52BC2D67E9D10048BE35 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		029C52BF2D67E9D10048BE35 /* FirebaseConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseConstants.swift; sourceTree = "<group>"; };
-		029C52C02D67E9D10048BE35 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		029C52C22D67E9D10048BE35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		029C52C32D67E9D10048BE35 /* Gagalin-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gagalin-Regular.otf"; sourceTree = "<group>"; };
 		029C52C42D67E9D10048BE35 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -89,6 +91,12 @@
 		02A2E35F2D5AC70E00E07D5D /* MovieMania.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieMania.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02A4A3BA2D6E33A6009A6EC0 /* CastData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastData.swift; sourceTree = "<group>"; };
 		02A4A3BC2D6E3A46009A6EC0 /* CastCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastCardView.swift; sourceTree = "<group>"; };
+		02A6CF122D72A38C0081A1D7 /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
+		02A6CF162D72B0820081A1D7 /* ActorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorsView.swift; sourceTree = "<group>"; };
+		02B6C6C72D6F8B21005632E2 /* WatchProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchProvider.swift; sourceTree = "<group>"; };
+		02B6C6C92D6FC394005632E2 /* ServiceProviderCardViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProviderCardViews.swift; sourceTree = "<group>"; };
+		02B6C6CB2D6FD41D005632E2 /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
+		02B6C6CD2D6FE12D005632E2 /* UserReviewViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReviewViews.swift; sourceTree = "<group>"; };
 		02CA56E72D6EBCEA0085D02A /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,6 +197,9 @@
 		029C52AA2D67E9D10048BE35 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				02A6CF122D72A38C0081A1D7 /* Actor.swift */,
+				02B6C6CB2D6FD41D005632E2 /* Reviews.swift */,
+				02B6C6C72D6F8B21005632E2 /* WatchProvider.swift */,
 				02CA56E72D6EBCEA0085D02A /* Video.swift */,
 				02A4A3BA2D6E33A6009A6EC0 /* CastData.swift */,
 				029C52A82D67E9D10048BE35 /* Extension.swift */,
@@ -205,14 +216,6 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		029C52AE2D67E9D10048BE35 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				029C52AD2D67E9D10048BE35 /* HomeViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		029C52B32D67E9D10048BE35 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +224,9 @@
 				029C52B12D67E9D10048BE35 /* MovieDetails.swift */,
 				029C52B22D67E9D10048BE35 /* SeeMoreMovieList.swift */,
 				02A4A3BC2D6E3A46009A6EC0 /* CastCardView.swift */,
+				02B6C6C92D6FC394005632E2 /* ServiceProviderCardViews.swift */,
+				02B6C6CD2D6FE12D005632E2 /* UserReviewViews.swift */,
+				02A6CF162D72B0820081A1D7 /* ActorsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -230,7 +236,6 @@
 			children = (
 				029C52AA2D67E9D10048BE35 /* Model */,
 				029C52AC2D67E9D10048BE35 /* Service */,
-				029C52AE2D67E9D10048BE35 /* ViewModel */,
 				029C52B32D67E9D10048BE35 /* Views */,
 			);
 			path = HomeView;
@@ -289,7 +294,6 @@
 			isa = PBXGroup;
 			children = (
 				029C52BF2D67E9D10048BE35 /* FirebaseConstants.swift */,
-				029C52C02D67E9D10048BE35 /* ToastView.swift */,
 				029C52FC2D69590E0048BE35 /* DeleteAll.swift */,
 			);
 			path = Utils;
@@ -458,6 +462,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02B6C6CA2D6FC394005632E2 /* ServiceProviderCardViews.swift in Sources */,
+				02A6CF172D72B0820081A1D7 /* ActorsView.swift in Sources */,
+				02B6C6C82D6F8B29005632E2 /* WatchProvider.swift in Sources */,
 				029C52C92D67E9D10048BE35 /* UserDetails.swift in Sources */,
 				029C52CA2D67E9D10048BE35 /* AuthServiceProvider.swift in Sources */,
 				029C52CB2D67E9D10048BE35 /* AuthScreenModel.swift in Sources */,
@@ -471,13 +478,13 @@
 				029C52F42D6821F90048BE35 /* SearchFunction.swift in Sources */,
 				029C52D12D67E9D10048BE35 /* DatabaseManagerViewModel.swift in Sources */,
 				029C52D22D67E9D10048BE35 /* FavouriteListingView.swift in Sources */,
+				02A6CF132D72A3990081A1D7 /* Actor.swift in Sources */,
 				029C52EC2D67EC230048BE35 /* ViewModel.swift in Sources */,
 				02A4A3BD2D6E3A46009A6EC0 /* CastCardView.swift in Sources */,
 				029C52D32D67E9D10048BE35 /* Extension.swift in Sources */,
 				029C52EA2D67EA770048BE35 /* WishListView.swift in Sources */,
 				029C52D42D67E9D10048BE35 /* Movie.swift in Sources */,
 				029C52D52D67E9D10048BE35 /* FetchService.swift in Sources */,
-				029C52D62D67E9D10048BE35 /* HomeViewModel.swift in Sources */,
 				02A4A3BB2D6E33A9009A6EC0 /* CastData.swift in Sources */,
 				029C52D72D67E9D10048BE35 /* HomeView.swift in Sources */,
 				029C52D82D67E9D10048BE35 /* MovieCardView.swift in Sources */,
@@ -488,7 +495,8 @@
 				029C52DC2D67E9D10048BE35 /* RootScreenModel.swift in Sources */,
 				029C52DD2D67E9D10048BE35 /* SettingView.swift in Sources */,
 				029C52DE2D67E9D10048BE35 /* FirebaseConstants.swift in Sources */,
-				029C52DF2D67E9D10048BE35 /* ToastView.swift in Sources */,
+				02B6C6CE2D6FE12D005632E2 /* UserReviewViews.swift in Sources */,
+				02B6C6CC2D6FD42B005632E2 /* Reviews.swift in Sources */,
 				029C52E02D67E9D10048BE35 /* MainTabItem.swift in Sources */,
 				029C52E12D67E9D10048BE35 /* MovieManiaApp.swift in Sources */,
 			);

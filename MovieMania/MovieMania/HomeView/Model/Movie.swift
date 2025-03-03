@@ -28,7 +28,7 @@ struct Movie: Codable{
         // Computed property to return the full image URL
         var posterURL: URL? {
             guard let posterURL = posterPath else { return nil }
-                        let baseURL = "https://image.tmdb.org/t/p/w500"
+            let baseURL = String().baseURL()
             return URL(string: baseURL + posterURL)
         }
         
@@ -59,22 +59,20 @@ struct Movie: Codable{
         }
             
                 }
+    
+    static let mockData = MovieData(
+                id: 123,
+                title: "Inception",
+                overview: "A mind-bending thriller about dreams within dreams.",
+                popularity: 95.0,
+                originalLanguage: "en",
+                releaseDate: "2010-07-16",
+                voteAverage: 8.8,
+                voteCount: 10000,
+                genreIds: [28, 878, 12]
+            )
         
-//        init(movieId: Int, movieTitle: String, movieOverview: String, moviePosterPath: String,
-//                     moviePopularity: Double, movieLanguage: String, movieReleaseDate: String,
-//                     movieVoteAverage: Double, movieVoteCount: Int, movieGenreIds: [Int]) {
-//                    self.id = movieId
-//                    self.title = movieTitle
-//                    self.overview = movieOverview
-//                    self.posterPath = moviePosterPath
-//                    self.popularity = moviePopularity
-//                    self.originalLanguage = movieLanguage
-//                    self.releaseDate = movieReleaseDate
-//                    self.voteAverage = movieVoteAverage
-//                    self.voteCount = movieVoteCount
-//                    self.genreIds = movieGenreIds
-//                }
-//            }
+    
     }
     
     

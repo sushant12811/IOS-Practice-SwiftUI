@@ -8,7 +8,10 @@ class FetchService: ObservableObject {
     @Published var upcomingMovies: [Movie.MovieData] = []
     @Published var movieCast: [Cast.CastData] = []
     @Published var video: [Video.VideoData] = []
-
+    @Published var watcherProviders : [Services] = []
+    @Published var reviews : [Author] = []
+    @Published var regionLink: String? = nil
+    @Published var selectedActor: Actor?
     
     let baseURL = "https://api.themoviedb.org/3/movie"
     let apiKey = "c3957c0341f6ceb7b221d37abf80c151"
@@ -75,8 +78,7 @@ class FetchService: ObservableObject {
         }
     }
     
-    //MARK: Fetching Cast Service
-    
+    //MARK: Fetching Cast Service, Reviews, watch providers, video
     func fetchedMovieDetailsTopic(of movieId: Int, for movieTopic: String) async {
         guard let url = URL(string: "\(baseURL)/\(movieId)/\(movieTopic)?api_key=\(apiKey)") else {
             print("Invalid URL for the \(movieTopic)")
@@ -85,14 +87,12 @@ class FetchService: ObservableObject {
         
         do {
             let (data, response) = try await URLSession.shared.data(from: url)
-           
-            
             if let httpResponse = response as? HTTPURLResponse {
                 print("HTTP Status Code: \(httpResponse.statusCode)")
             }
             
-            let jsonString = String(data: data, encoding: .utf8)
-                    print("Raw API Response for \(movieTopic): \(jsonString ?? "No data")")
+//            let jsonString = String(data: data, encoding: .utf8)
+//                    print("Raw API Response for \(reviews): \(jsonString ?? "No data")")
 
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -108,6 +108,18 @@ class FetchService: ObservableObject {
                         let decodedResponse = try decoder.decode(Video.self, from: data)
                         self.video.append(contentsOf: decodedResponse.results)
                         
+                    case "watch/providers":
+                        let decodedResponse = try decoder.decode(WatchProvider.self, from: data)
+                            self.watcherProviders.append(contentsOf: decodedResponse.results["CA"]?.rent ?? [])
+                        if let link = decodedResponse.results["CA"]?.link {
+                            self.regionLink = link // Store the link for use in UI
+                        }
+                        
+                    case "reviews":
+                        let decodedResponse = try decoder.decode(Reviews.self, from: data)
+                        self.reviews.append(contentsOf: decodedResponse.results)
+
+
                     default:
                         print("Unknown movie topic: \(movieTopic)")
                     }
@@ -119,5 +131,32 @@ class FetchService: ObservableObject {
             print("Failed to fetch \(movieTopic): \(error.localizedDescription)")
         }
     }
+    
+    //MARK: Fetching Actor details
+    
+    func fetchActorDetails(of actorId: Int) async {
+            guard let url = URL(string: "https://api.themoviedb.org/3/person/\(actorId)?api_key=\(apiKey)") else {
+                print("Invalid URL for fetching actor Details")
+                return
+            }
+
+            do {
+                let (data, response) = try await URLSession.shared.data(from: url)
+                if let httpResponse = response as? HTTPURLResponse {
+                    print("HTTP Status Code: \(httpResponse.statusCode)")
+                }
+
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+
+                let decodedResponse = try decoder.decode(Actor.self, from: data)
+
+                await MainActor.run {
+                    self.selectedActor = decodedResponse 
+                }
+            } catch {
+                print("Decoding error: \(error.localizedDescription)")
+            }
+        }
 
 }

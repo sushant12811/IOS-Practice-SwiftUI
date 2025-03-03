@@ -13,6 +13,7 @@ struct HomeView: View {
     @State private var searchText = ""
     @StateObject private var authScreenModel = AuthScreenModel()
     
+    
     var body: some View {
         NavigationStack {
             ScrollView{

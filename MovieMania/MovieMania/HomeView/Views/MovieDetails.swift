@@ -12,6 +12,7 @@ struct MovieDetails: View {
     @Environment(\.dismiss) private var dismiss
     
     var movieDetails: Movie.MovieData
+    let column = [GridItem(), GridItem(), GridItem(), GridItem()]
     
     @State private  var isFavIconTapped = false
     @State private  var isWatchedTapped = false
@@ -21,21 +22,48 @@ struct MovieDetails: View {
     @StateObject private var wishedViewModel = DatabaseManagerViewModel()
     @StateObject private var watchedViewModel = DatabaseManagerViewModel()
     @StateObject private var fetchService = FetchService()
+    @State private var isReview = false
+    @State private var selectedCast : Actor?
+    
+    let serviceURL = URL(string: "https://www.themoviedb.org/movie/1126166-flight-risk/watch?locale=CA")
     
     
     var body: some View {
         
         ScrollView{
-            VStack{
+            VStack(alignment: .leading){
                 ImageCardView()
                 releaseRatingSection()
+                
                 VStack(alignment:.leading, spacing: 10){
+                    //Genre Name
                     Text("\(movieDetails.genreNames.joined(separator: " | "))")
                         .foregroundStyle(.gray)
                     
-                    Text("Overview")
-                        .font(.title2)
-                        .fontWeight(.semibold)
+                    //OverView title and Reviews Button
+                    HStack{
+                        Text("Overview")
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                        Spacer()
+                        Button{
+                            isReview.toggle()
+                        }label: {
+                            HStack(spacing: 1){
+                                Image(systemName: "star.fill")
+                                Text("Reviews")
+                                
+                            }.padding(7)
+                                .padding(.trailing,4)
+                                .font(.subheadline)
+                                .fontWeight(.semibold)
+                                .foregroundStyle(.black)
+                                .background(.white)
+                                .clipShape(Capsule())
+                                .shadow(color: Color.gray, radius: 3)
+                            
+                        }
+                    }
                     
                     Text(movieDetails.overview)
                         .padding(.bottom,10)
@@ -46,22 +74,62 @@ struct MovieDetails: View {
                     
                 }.padding(10)
                 
+                //Cast and sheet presented to ActorView
                 ScrollView( .horizontal, showsIndicators: false){
-                    LazyHStack{
-                        ForEach(fetchService.movieCast, id: \.id){ cast in
-                            CastCardView(movieCasts: cast)
-                            
+                    LazyHStack {
+                            ForEach(fetchService.movieCast, id: \.id) { cast in
+                                Button{
+                                    Task{
+                                        await fetchService.fetchActorDetails(of: cast.id)
+                                        selectedCast = fetchService.selectedActor
+                                    }
+                                }label:{
+                                    CastCardView(movieCasts: cast)
+                                }
+                            }
                         }
-                    }
                 }
                 
-               
+                
                 videoTrailer()
                 
+                //Watch Provider
+                VStack(alignment:.leading){
+                    Text("Watch Options")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                        .padding()
+                    if fetchService.watcherProviders.isEmpty{
+                            Text("Sorry, no any watch options for now")
+                                .font(.subheadline)
+                                .fontWeight(.semibold)
+                                .foregroundStyle(.gray)
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                        
+                    }else{
+                        LazyVGrid(columns: column) {
+                            ForEach(fetchService.watcherProviders, id: \.providerId) { service
+                                
+                                in
+                                HStack {
+                                    if let url = fetchService.regionLink, let validUrl = URL(string: url) {
+                                        Link(destination: validUrl) {
+                                            ServiceProviderCardViews(services: service)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .padding()
+                        .background(.gray.opacity(0.1))
+                        
+                        
+                    }
+                    
+                }
+                
             }
-            
-            
-            
             
         }.scrollIndicators(.hidden)
             .ignoresSafeArea()
@@ -91,9 +159,17 @@ struct MovieDetails: View {
                 Task{
                     await fetchService.fetchedMovieDetailsTopic(of: movieDetails.id, for: "credits")
                     await fetchService.fetchedMovieDetailsTopic(of: movieDetails.id, for: "videos")
+                    await fetchService.fetchedMovieDetailsTopic(of: movieDetails.id, for: "watch/providers")
+                    
                     
                 }
             }
+            .sheet(isPresented: $isReview) {
+                UserReviewViews(movies: movieDetails)
+            }
+            .sheet(item: $selectedCast) { actor in
+                ActorsView(actorView: actor)
+                    }
     }
     
     @ToolbarContentBuilder
@@ -278,36 +354,41 @@ extension MovieDetails {
                 .font(.title2)
                 .fontWeight(.semibold)
             
-            ForEach(fetchService.video, id: \.id) { video in
-                if video.name == "Official Trailer" {
-                    if let url = video.videoURL {
-                        Link(destination: url) {
-                            HStack {
-                                Image(systemName: "play.fill")
-                                Text("Watch Trailer")
-                                    .fontWeight(.semibold)
-                            }
-                            .foregroundStyle(.blue)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color.white)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color.white, lineWidth: 2)
-                            )
+            if let video = fetchService.video.first(where: { $0.type == "Trailer" || $0.name == "Official Trailer" }) {
+                if let url = video.videoURL {
+                    Link(destination: url) {
+                        HStack {
+                            Image(systemName: "play.fill")
+                            Text("Watch Trailer")
+                                .fontWeight(.semibold)
                         }
-                    } else {
-                        Text("No video available")
-                            .foregroundColor(.gray)
+                        .foregroundStyle(.blue)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .shadow(color: .gray, radius: 5)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.blue, lineWidth: 2)
+                        )
                     }
+                } else {
+                    Text("No video available")
+                        .foregroundColor(.gray)
                 }
+            } else {
+                Text("No trailer available")
+                    .foregroundColor(.gray)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding()
+        .padding(.horizontal,10)
     }
+    
+    
 }
+
 
 #Preview {
     NavigationStack{

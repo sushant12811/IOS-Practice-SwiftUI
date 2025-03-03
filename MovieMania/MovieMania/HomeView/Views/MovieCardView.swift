@@ -63,7 +63,7 @@ struct MovieCardView: View {
                         .foregroundColor(.white.opacity(0.7))
                 }
                 
-            }.padding(.bottom, 7)
+            }.padding(.bottom)
             .frame(width: 200, height: 340)
             .clipShape(RoundedRectangle(cornerRadius: 10))
 
